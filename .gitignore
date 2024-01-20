@@ -1,5 +1,6 @@
 .venv/
-
+.idea/
+chat_bot/__pycache__
 chat_bot/glove.6B.50d.txt
 chat_bot/glove.6B.100d.txt
 chat_bot/glove.6B.200d.txt

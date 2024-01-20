@@ -1,0 +1,116 @@
+{% extends 'partials/base_appointment.html'%}
+{% block title %} Booking {% endblock %}
+{% block content %}
+    {{appointment_form.csrf_token}}
+    <div class="chat-screen">
+    <div class="chat-header">
+        <div class="chat-header-title">
+            Appointment Booking
+        </div>
+        <div class="chat-header-option hide">
+            <span class="dropdown custom-dropdown">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink1" style="will-change: transform;">
+                    <a class="dropdown-item" href="javascript:void(0);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#bc32ef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        Send Transcriptions
+                    </a>
+                    <a class="dropdown-item end-chat" href="{{url_for('auth.logout')}}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#bc32ef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-power"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+                        Cancel Booking
+                    </a>
+                </div>
+            </span>
+        </div>
+    </div>
+    {% if username %}
+        <p>Hello, {{ username }} you are already logged in.</p>
+    {% else %}
+        <p>You are not logged in. Please <a href="/login">Login</a>to access the home page</p>
+    {% endif %}
+    <form method="POST" action="{{ url_for('appointment.schedule_appointment')}}">
+        <div class="chat-mail">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="username">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="username">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="problem title">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <textarea class="form-control"  placeholder="description"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn-primary btn-rounded btn-block">next</button>
+                    </div>
+                <div class="col-md-12">
+                    <div class="powered-by">Created by Terah Jones Alukwe</div>
+                </div>
+                </div>
+        </div>
+    </form>
+
+    <form method="POST" action="{{ url_for('appointment.schedule_appointment')}}">
+        <div class="chat-input hide">
+            <div class="col-md-12">
+                <select class="form-control  select2_el">
+                    <option selected="selected">Canada</option>
+                    <option>Kenya</option>
+                    <option>Uganda</option>
+                </select>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="date" class="form-control" placeholder="Date">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="time" class="form-control" placeholder="time">
+                </div>
+            </div>
+            <div class="col-md-12">
+
+            </div>
+            <div class="col-md-12">
+                <div class="powered-by">Created by Terah Jones Alukwe</div>
+            </div>
+        </div>
+    </form>
+
+    <div class="chat-session-end hide">
+        <h5>You have Canceled Booking</h5>
+        <p>Thank you for using our service, If you can take a minute and rate this service we would appreciate:</p>
+        <div class="rate-me">
+            <div class="rate-bubble great">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-up"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg></span>
+                Great
+            </div>
+            <div class="rate-bubble bad">
+                <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thumbs-down"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"></path></svg></span>
+                Bad
+            </div>
+        </div>
+        <a class="transcript-chat">Need a Transcript?</a>
+        <div class="powered-by">Created by Alukwe Jones Terah</div>
+    </div>
+    </div>
+{% endblock %}

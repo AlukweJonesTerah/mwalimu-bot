@@ -1,0 +1,71 @@
+mkdir myproject
+cd myproject
+python3 -m venv .venv
+. .venv/bin/activate
+pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+flask --app chat_bot run --debug - running the program
+netstat -nlp | grep 5000 - addressing (this port is already in use)
+pip install -e .
+pip install pytest coverage - for testing
+pip install build - for deployment
+python -m build --wheel
+pip install flaskr-1.0.0-py3-none-any.whl
+flask --app flaskr init-db
+python -c 'import secrets; print(secrets.token_hex())'
+pip install waitress - Run with a Production Server
+waitress-serve --call 'flaskr:create_app'
+
+for database migration
+
+export FLASK_APP=chat_bot
+export FLASK_APP=chat_bohttp://example.com't:create_app
+
+flask db init
+flask db migrate -m "Initial migration"
+flask db upgrade
+
+pip install "flask[async]"
+
+tensorrt installation
+
+python3 -m pip install --upgrade tensorrt
+python3 -m pip install --upgrade tensorrt_lean
+python3 -m pip install --upgrade tensorrt_dispatch
+
+
+pip uninstall tensorflow
+pip install tensorflow
+pip install tensorflow-cpu
+pip install tensorflow-cpu
+pip install python-Levenshtein
+
+pip uninstall tensorflow
+git clone https://github.com/tensorflow/tensorflow.git
+cd tensorflow
+./configure
+
+bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package
+bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+pip install /tmp/tensorflow_pkg/*.whl
+
+
+sudo apt install apt-transport-https curl gnupg -y
+curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg
+sudo mv bazel-archive-keyring.gpg /usr/share/keyrings
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+sudo apt update && sudo apt install bazel
+sudo apt update && sudo apt full-upgrade
+sudo apt install bazel-1.0.0
+OR
+sudo ln -s /usr/bin/bazel-1.0.0 /usr/bin/bazel
+bazel --version  # 1.0.0
+
+sudo apt install default-jdk
+sudo apt install g++ unzip zip
+
+CORS(user_input_bp, origins=['http://example.com', 'https://another-example.com', *]) -- By default, CORS allows all origins (*).
+
+If you want to restrict access to specific origins, you can pass the origins parameter with a list of allowed origins.
+
+CORS(user_input_bp, origins=['http://example.com'], supports_credentials=True)
+flask-cors provides various options for fine-tuning CORS settings. You can explore additional configuration options in the documentation.

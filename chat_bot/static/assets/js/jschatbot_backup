@@ -1,0 +1,30 @@
+
+// Prevent form submission and handle chat input
+        $('#chat-form').submit(function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            var userInput = $('#user-input').val();
+            console.log(userInput)
+            var csrfToken = $('input[name=csrf_token]').val(); // Extract CSRF token
+
+            // Your AJAX request to send the input to the server
+            $.ajax({
+                type: 'POST',
+                url: '/user_input/bot',  // Update the URL based on your Flask route
+                contentType: 'application/json',
+                data: JSON.stringify({ 'user_input': userInput }),
+                success: function (data) {
+                    console.log(data); // Log the entire data object to inspect its structure
+                    // Update the chat UI with the response
+                    $('.chat-bubble.me.display').text(userInput);
+                    $('.chat-bubble.you.display').text(data.response);
+                    // Clear the input field
+                    $('#user-input').val('');
+                },
+
+                error: function () {
+                    // Handle errors if necessary
+                    console.log('Error submitting the form.');
+                }
+            });
+        });
